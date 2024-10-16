@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function calculatePrice(discount) {
+    return function(tax) {
+        return function(price) {
+            const discountedPrice = price - price * discount;
+            const totalPrice = discountedPrice + discountedPrice * tax;
+            return totalPrice;
+        };
+    };
+}
+
+const discount10 = calculatePrice(0.1); // discount of 10%
+const discount10AndTax20 = discount10(0.2); // tax of 20%
+
+console.log(discount10AndTax20(100)); // Output: 108
+
+    </script>
+</body>
+</html>
